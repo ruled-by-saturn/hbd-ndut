@@ -76,20 +76,20 @@ function Modal({ wish, onClose }: { wish: Wish; onClose: () => void }) {
         </div>
 
         <section style={{ marginBottom:'1.2rem' }}>
-          <h3 style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'0.8rem', color:'var(--green)', textTransform:'uppercase', letterSpacing:'0.1em', marginBottom:'0.5rem' }}>Birthday Wish 🎂</h3>
+          <h3 style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'0.8rem', color:'var(--green)', textTransform:'uppercase', letterSpacing:'0.1em', marginBottom:'0.5rem' }}>birthday wish 🎂</h3>
           <p style={{ fontFamily:'Helvetica, sans-serif', fontSize:'0.98rem', lineHeight:1.65, color:'#2a4a10', background:`${wish.color}55`, borderRadius:'14px', padding:'0.9rem 1.1rem' }}>{wish.message}</p>
         </section>
 
         {wish.memory && (
           <section style={{ marginBottom:'1.2rem' }}>
-            <h3 style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'0.8rem', color:'var(--green)', textTransform:'uppercase', letterSpacing:'0.1em', marginBottom:'0.5rem' }}>Favorite Memory 🌸</h3>
+            <h3 style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'0.8rem', color:'var(--green)', textTransform:'uppercase', letterSpacing:'0.1em', marginBottom:'0.5rem' }}>favorite memory 🌸</h3>
             <p style={{ fontFamily:'Helvetica, sans-serif', fontSize:'0.93rem', lineHeight:1.65, color:'#2a4a10', background:'#f4fce8', borderRadius:'14px', padding:'0.9rem 1.1rem', fontStyle:'italic' }}>"{wish.memory}"</p>
           </section>
         )}
 
         {wish.photo_urls && wish.photo_urls.length > 0 && (
           <section>
-            <h3 style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'0.8rem', color:'var(--green)', textTransform:'uppercase', letterSpacing:'0.1em', marginBottom:'0.7rem' }}>Photo(s) 📸</h3>
+            <h3 style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'0.8rem', color:'var(--green)', textTransform:'uppercase', letterSpacing:'0.1em', marginBottom:'0.7rem' }}>photo(s) 📸</h3>
             <div style={{ display:'grid', gridTemplateColumns: wish.photo_urls.length === 1 ? '1fr' : '1fr 1fr', gap:'0.5rem' }}>
               {wish.photo_urls.map((url, i) => (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -128,8 +128,8 @@ export default function Board() {
     <div style={{ minHeight:'100vh', background:'var(--bg)', position:'relative', overflow:'hidden' }}>
       <header style={{ position:'sticky', top:0, zIndex:10, display:'flex', alignItems:'center', justifyContent:'space-between', padding:'0.9rem 1.5rem', borderBottom:'2px solid #d4e9a0', background:'rgba(255,253,245,.95)', backdropFilter:'blur(8px)' }}>
         <Link href="/" style={{ textDecoration:'none', color:'var(--green)', fontFamily:'Helvetica', fontSize:'0.82rem', opacity:0.7 }}>← home</Link>
-        <h1 style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'clamp(1rem, 4vw, 1.4rem)', color:'var(--green)' }}>Birthday Board 💌</h1>
-        <Link href="/msg" style={{ textDecoration:'none', color:'var(--green)', fontFamily:'Helvetica', fontSize:'0.78rem', background:'#B5EAD7', padding:'0.38rem 0.9rem', borderRadius:'999px', border:'1.5px solid var(--green)', whiteSpace:'nowrap' }}>+ Add wish</Link>
+        <h1 style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'clamp(1rem, 4vw, 1.4rem)', color:'var(--green)' }}>birthday board 💌</h1>
+        <Link href="/msg" style={{ textDecoration:'none', color:'var(--green)', fontFamily:'Helvetica', fontSize:'0.78rem', background:'#B5EAD7', padding:'0.38rem 0.9rem', borderRadius:'999px', border:'1.5px solid var(--green)', whiteSpace:'nowrap' }}>+ add wish</Link>
       </header>
 
       <div style={{ position:'relative', width:'100%', height:'calc(100vh - 62px)', minHeight:'500px' }}>
@@ -150,8 +150,8 @@ export default function Board() {
         )}
         {!loading && !error && wishes.length === 0 && (
           <div style={{ display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', height:'100%', gap:'1rem', textAlign:'center', padding:'2rem' }}>
-            <p style={{ fontFamily:'Georgia, serif', fontSize:'1.3rem', color:'var(--green)' }}>No wishes yet!</p>
-            <Link href="/msg" style={{ textDecoration:'none', color:'white', background:'var(--green)', padding:'0.75rem 1.6rem', borderRadius:'999px', fontFamily:'Helvetica', fontWeight:'bold' }}>Send the first wish 🎂</Link>
+            <p style={{ fontFamily:'Georgia, serif', fontSize:'1.3rem', color:'var(--green)' }}>no wishes yet!</p>
+            <Link href="/msg" style={{ textDecoration:'none', color:'white', background:'var(--green)', padding:'0.75rem 1.6rem', borderRadius:'999px', fontFamily:'Helvetica', fontWeight:'bold' }}>send the first wish 🎂</Link>
           </div>
         )}
         {!loading && !error && wishes.map(w => (

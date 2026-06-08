@@ -49,19 +49,19 @@ export default function Home() {
 
       <div style={{ position:'relative', zIndex:2, display:'flex', flexDirection:'column', alignItems:'center', width:'100%' }}>
         <div style={{ fontSize:'2.8rem', marginBottom:'0.6rem' }}>🎂</div>
-        <h1 className="page-title">Happy Birthday, Ndut!</h1>
+        <h1 className="page-title">happy birthday, ndut!</h1>
         <p className="page-subtitle">thank you for being born — from your friends</p>
 
         <div className="cards-row">
           <Link href="/board" className="menu-card">
             <span style={{ fontSize:'3.2rem', display:'block', marginBottom:'1rem' }}>💌</span>
-            <div style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'1.35rem', color:'var(--green)', marginBottom:'0.4rem' }}>Birthday Board</div>
-            <p style={{ fontFamily:'Helvetica, sans-serif', fontSize:'0.88rem', color:'var(--green-light)', lineHeight:1.55 }}>Read all the love and wishes from everyone who adores you</p>
+            <div style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'1.35rem', color:'var(--green)', marginBottom:'0.4rem' }}>birthday board</div>
+            <p style={{ fontFamily:'Helvetica, sans-serif', fontSize:'0.88rem', color:'var(--green-light)', lineHeight:1.55 }}>read all the love and wishes from everyone who adores you</p>
           </Link>
           <Link href="/msg" className="menu-card">
             <span style={{ fontSize:'3.2rem', display:'block', marginBottom:'1rem' }}>✍️</span>
-            <div style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'1.35rem', color:'var(--green)', marginBottom:'0.4rem' }}>Leave a Wish</div>
-            <p style={{ fontFamily:'Helvetica, sans-serif', fontSize:'0.88rem', color:'var(--green-light)', lineHeight:1.55 }}>Send your birthday message, memory, and a photo</p>
+            <div style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'1.35rem', color:'var(--green)', marginBottom:'0.4rem' }}>leave a wish</div>
+            <p style={{ fontFamily:'Helvetica, sans-serif', fontSize:'0.88rem', color:'var(--green-light)', lineHeight:1.55 }}>send your birthday message, memory, and a photo</p>
           </Link>
         </div>
 

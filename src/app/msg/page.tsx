@@ -96,13 +96,13 @@ export default function MsgPage() {
     <div style={{ minHeight:'100vh', background:'var(--bg)', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', padding:'2rem', textAlign:'center' }}>
       <style>{`@keyframes popIn{0%{transform:scale(.5);opacity:0}70%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}} @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}`}</style>
       <div style={{ fontSize:'5rem', animation:'popIn .55s ease both', marginBottom:'1rem' }}>🎉</div>
-      <h2 style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'2rem', color:'var(--green)', animation:'fadeUp .5s .25s ease both', opacity:0 }}>Wish sent!</h2>
+      <h2 style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'2rem', color:'var(--green)', animation:'fadeUp .5s .25s ease both', opacity:0 }}>wish sent!</h2>
       <p style={{ fontFamily:'Helvetica', color:'var(--green-light)', marginTop:'0.5rem', marginBottom:'2rem', animation:'fadeUp .5s .45s ease both', opacity:0, lineHeight:1.65 }}>
-        Ndut is going to love this. 💚<br/>Your message is now floating on her birthday board.
+        ndut is going to love this. 💚<br/>your message is now floating on her birthday board.
       </p>
       <div style={{ display:'flex', gap:'1rem', flexWrap:'wrap', justifyContent:'center', animation:'fadeUp .5s .65s ease both', opacity:0 }}>
-        <Link href="/board" style={{ textDecoration:'none', color:'white', background:'var(--green)', padding:'0.75rem 1.6rem', borderRadius:'999px', fontFamily:'Helvetica', fontWeight:'bold' }}>See the board 💌</Link>
-        <button onClick={() => { setName(''); setMessage(''); setMemory(''); setPhotoFiles([]); setPhotoPreviews([]); setStatus('idle') }} style={{ background:'none', border:'2px solid var(--green)', color:'var(--green)', padding:'0.75rem 1.6rem', borderRadius:'999px', fontFamily:'Helvetica', cursor:'pointer' }}>Add another wish</button>
+        <Link href="/board" style={{ textDecoration:'none', color:'white', background:'var(--green)', padding:'0.75rem 1.6rem', borderRadius:'999px', fontFamily:'Helvetica', fontWeight:'bold' }}>see the board 💌</Link>
+        <button onClick={() => { setName(''); setMessage(''); setMemory(''); setPhotoFiles([]); setPhotoPreviews([]); setStatus('idle') }} style={{ background:'none', border:'2px solid var(--green)', color:'var(--green)', padding:'0.75rem 1.6rem', borderRadius:'999px', fontFamily:'Helvetica', cursor:'pointer' }}>add another wish</button>
       </div>
     </div>
   )
@@ -124,40 +124,40 @@ export default function MsgPage() {
 
       <header style={{ position:'sticky', top:0, zIndex:10, display:'flex', alignItems:'center', justifyContent:'space-between', padding:'0.9rem 1.5rem', borderBottom:'2px solid #d4e9a0', background:'rgba(255,253,245,.95)', backdropFilter:'blur(8px)' }}>
         <Link href="/" style={{ textDecoration:'none', color:'var(--green)', fontFamily:'Helvetica', fontSize:'0.82rem', opacity:.7 }}>← home</Link>
-        <h1 style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'clamp(1rem,4vw,1.4rem)', color:'var(--green)' }}>Leave a Wish ✍️</h1>
+        <h1 style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'clamp(1rem,4vw,1.4rem)', color:'var(--green)' }}>leave a wish ✍️</h1>
         <Link href="/board" style={{ textDecoration:'none', color:'var(--green)', fontFamily:'Helvetica', fontSize:'0.82rem', opacity:.7 }}>board →</Link>
       </header>
 
       <div style={{ maxWidth:'520px', margin:'0 auto', padding:'2rem 1.25rem', animation:'fadeIn .5s ease' }}>
         <div style={{ background:'#B5EAD7', borderRadius:'18px', padding:'1.2rem 1.4rem', marginBottom:'2rem', border:'1.5px solid #8fd4b4' }}>
-          <p style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'1.05rem', color:'var(--green)', marginBottom:'0.25rem' }}>💚 Write a wish for Ndut!</p>
-          <p style={{ fontFamily:'Helvetica', fontSize:'0.85rem', color:'var(--green-mid)', lineHeight:1.55 }}>Your message will float as a card on her birthday board for everyone to see 🎂</p>
+          <p style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'1.05rem', color:'var(--green)', marginBottom:'0.25rem' }}>💚 write a wish for ndut!</p>
+          <p style={{ fontFamily:'Helvetica', fontSize:'0.85rem', color:'var(--green-mid)', lineHeight:1.55 }}>your message will float as a card on her birthday board for everyone to see 🎂</p>
         </div>
 
         <div style={{ marginBottom:'1.5rem' }}>
-          <label style={{ display:'block', fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'0.95rem', color:'var(--green)', marginBottom:'0.4rem' }}>Your Name <span style={{ color:'#c0392b' }}>*</span></label>
-          <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="e.g. Tia, Marco, Kiki…" style={inp(!!errors.name)} />
+          <label style={{ display:'block', fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'0.95rem', color:'var(--green)', marginBottom:'0.4rem' }}>your name <span style={{ color:'#c0392b' }}>*</span></label>
+          <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="e.g. tia, marco, kiki…" style={inp(!!errors.name)} />
           {errors.name && <p style={{ color:'#c0392b', fontFamily:'Helvetica', fontSize:'0.78rem', marginTop:'0.3rem' }}>⚠ {errors.name}</p>}
         </div>
 
         <div style={{ marginBottom:'1.5rem' }}>
-          <label style={{ display:'block', fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'0.95rem', color:'var(--green)', marginBottom:'0.4rem' }}>Birthday Wishes for Tfia <span style={{ color:'#c0392b' }}>*</span></label>
-          <textarea value={message} onChange={e => setMessage(e.target.value)} placeholder="Write your heartfelt birthday message here…" rows={5} style={inp(!!errors.message)} />
+          <label style={{ display:'block', fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'0.95rem', color:'var(--green)', marginBottom:'0.4rem' }}>birthday wishes for tfia <span style={{ color:'#c0392b' }}>*</span></label>
+          <textarea value={message} onChange={e => setMessage(e.target.value)} placeholder="write your heartfelt birthday message here…" rows={5} style={inp(!!errors.message)} />
           {errors.message && <p style={{ color:'#c0392b', fontFamily:'Helvetica', fontSize:'0.78rem', marginTop:'0.3rem' }}>⚠ {errors.message}</p>}
         </div>
 
         <div style={{ marginBottom:'1.5rem' }}>
-          <label style={{ display:'block', fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'0.95rem', color:'var(--green)', marginBottom:'0.4rem' }}>My Favorite Memory with Tfia <span style={{ fontFamily:'Helvetica', fontWeight:'normal', color:'var(--green-pale)', fontSize:'0.8rem' }}>(optional)</span></label>
-          <textarea value={memory} onChange={e => setMemory(e.target.value)} placeholder="Share a memory that makes you smile…" rows={3} style={inp()} />
+          <label style={{ display:'block', fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'0.95rem', color:'var(--green)', marginBottom:'0.4rem' }}>my favorite memory with tfia <span style={{ fontFamily:'Helvetica', fontWeight:'normal', color:'var(--green-pale)', fontSize:'0.8rem' }}>(optional)</span></label>
+          <textarea value={memory} onChange={e => setMemory(e.target.value)} placeholder="share a memory that makes you smile…" rows={3} style={inp()} />
         </div>
 
         <div style={{ marginBottom:'2rem' }}>
-          <label style={{ display:'block', fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'0.95rem', color:'var(--green)', marginBottom:'0.4rem' }}>My Favorite Photo of/with Tfia <span style={{ fontFamily:'Helvetica', fontWeight:'normal', color:'var(--green-pale)', fontSize:'0.8rem' }}>(optional, up to 3)</span></label>
+          <label style={{ display:'block', fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'0.95rem', color:'var(--green)', marginBottom:'0.4rem' }}>my favorite photo of/with tfia <span style={{ fontFamily:'Helvetica', fontWeight:'normal', color:'var(--green-pale)', fontSize:'0.8rem' }}>(optional, up to 3)</span></label>
           {photoFiles.length < 3 && (
             <div className={`dropzone${isDragging ? ' drag' : ''}`} onClick={() => fileRef.current?.click()} onDragOver={e => { e.preventDefault(); setIsDragging(true) }} onDragLeave={() => setIsDragging(false)} onDrop={handleDrop}>
               <span style={{ fontSize:'2rem' }}>📷</span>
-              <p style={{ fontFamily:'Helvetica', fontSize:'0.85rem', color:'var(--green-light)', marginTop:'0.4rem' }}>Click or drag photos here</p>
-              <p style={{ fontFamily:'Helvetica', fontSize:'0.75rem', color:'var(--green-pale)', marginTop:'0.2rem' }}>JPG, PNG, GIF — up to 3 photos</p>
+              <p style={{ fontFamily:'Helvetica', fontSize:'0.85rem', color:'var(--green-light)', marginTop:'0.4rem' }}>click or drag photos here</p>
+              <p style={{ fontFamily:'Helvetica', fontSize:'0.75rem', color:'var(--green-pale)', marginTop:'0.2rem' }}>jpg, png, gif — up to 3 photos</p>
             </div>
           )}
           <input ref={fileRef} type="file" accept="image/*" multiple onChange={onFileChange} style={{ display:'none' }} />
@@ -177,7 +177,7 @@ export default function MsgPage() {
         {status === 'error' && <p style={{ color:'#c0392b', fontFamily:'Helvetica', fontSize:'0.88rem', marginBottom:'1rem', textAlign:'center' }}>⚠ Something went wrong. Please try again.</p>}
 
         <button className="submit-btn" onClick={handleSubmit} disabled={isLoading}>
-          {status === 'uploading' ? 'Uploading photos… 📸' : status === 'saving' ? 'Sending wish… 🌸' : 'Send Birthday Wish 🎉'}
+          {status === 'uploading' ? 'uploading photos… 📸' : status === 'saving' ? 'sending wish… 🌸' : 'send birthday wish 🎉'}
         </button>
       </div>
     </div>

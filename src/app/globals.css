@@ -1,11 +1,11 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg: #FFF9E6;
-  --green: #2D5016;
-  --green-mid: #3a6b1e;
-  --green-light: #557a2d;
-  --green-pale: #99b87a;
-  --card-bg: #FFFDF5;
+  --bg: #F5EFC0;
+  --green: #3D7A1A;
+  --green-mid: #4a8c22;
+  --green-light: #5a9e2f;
+  --green-pale: #8fc45a;
+  --card-bg: #FDFAE8;
 }
 html, body { background: var(--bg); font-family: Helvetica, Arial, sans-serif; color: var(--green); min-height: 100vh; }
 h1, h2, h3, h4 { font-family: Georgia, 'Times New Roman', serif; font-weight: bold; }

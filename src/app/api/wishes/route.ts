@@ -12,6 +12,24 @@ export async function GET() {
   return NextResponse.json(data)
 }
 
+export async function DELETE(req: Request) {
+  const supabase = getSupabase()
+  const { id, password } = await req.json()
+
+  if (password !== 'hapus') {
+    return NextResponse.json({ error: 'incorrect password' }, { status: 401 })
+  }
+
+  if (!id) {
+    return NextResponse.json({ error: 'id is required' }, { status: 400 })
+  }
+
+  const { error } = await supabase.from('wishes').delete().eq('id', id)
+
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  return NextResponse.json({ success: true })
+}
+
 export async function POST(req: Request) {
   const supabase = getSupabase()
   const body = await req.json()

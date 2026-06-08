@@ -26,12 +26,12 @@ export interface Wish {
 }
 
 export const PASTEL_COLORS = [
-  '#FFB3C6','#B5EAD7','#C7CEEA','#FFDAC1',
-  '#FFD6E0','#E2F0CB','#F9D4B6','#D4E9FF',
-  '#ECD9FA','#FFFACD','#FFC8DD','#BDE0FE',
+  '#FFB3C6', '#B5EAD7', '#C7CEEA', '#FFDAC1',
+  '#FFD6E0', '#E2F0CB', '#F9D4B6', '#D4E9FF',
+  '#ECD9FA', '#FFFACD', '#FFC8DD', '#BDE0FE',
 ]
 
-export const SHAPES: Wish['shape'][] = ['circle','cloud','heart','star','duck']
+export const SHAPES: Wish['shape'][] = ['circle', 'cloud', 'heart', 'star', 'duck']
 
 export function randomShape(): Wish['shape'] {
   return SHAPES[Math.floor(Math.random() * SHAPES.length)]

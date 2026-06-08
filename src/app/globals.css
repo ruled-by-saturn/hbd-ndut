@@ -1,31 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Georgia&display=swap');
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
   --bg: #FFF9E6;
   --green: #2D5016;
-  --green-light: #3a6b1e;
-  --pastel-1: #FFB3C6;
-  --pastel-2: #B5EAD7;
-  --pastel-3: #C7CEEA;
-  --pastel-4: #FFDAC1;
-  --pastel-5: #FFD6E0;
-  --pastel-6: #E2F0CB;
-  --pastel-7: #F9D4B6;
-  --pastel-8: #D4E9FF;
-  --pastel-9: #ECD9FA;
-  --pastel-10: #FFFACD;
+  --green-mid: #3a6b1e;
+  --green-light: #557a2d;
+  --green-pale: #99b87a;
+  --card-bg: #FFFDF5;
 }
-
-html, body {
-  background: var(--bg);
-  font-family: Helvetica, Arial, sans-serif;
-  color: var(--green);
-  min-height: 100vh;
-}
-
-h1, h2, h3, .serif {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-weight: bold;
-}
+html, body { background: var(--bg); font-family: Helvetica, Arial, sans-serif; color: var(--green); min-height: 100vh; }
+h1, h2, h3, h4 { font-family: Georgia, 'Times New Roman', serif; font-weight: bold; }
+::selection { background: #B5EAD7; color: var(--green); }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #c8e6a0; border-radius: 999px; }

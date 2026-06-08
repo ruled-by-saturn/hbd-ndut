@@ -2,149 +2,70 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-const confettiColors = ['#FFB3C6','#B5EAD7','#C7CEEA','#FFDAC1','#FFD6E0','#E2F0CB','#F9D4B6','#D4E9FF','#ECD9FA']
+const BLOB_COLORS = ['#FFB3C6','#B5EAD7','#C7CEEA','#FFDAC1','#FFD6E0','#E2F0CB','#F9D4B6','#D4E9FF','#ECD9FA','#FFFACD','#FFC8DD','#BDE0FE']
 
-function FloatingPetal({ style }: { style: React.CSSProperties }) {
-  return <div style={{ position:'fixed', borderRadius:'50%', opacity:0.5, pointerEvents:'none', ...style }} />
-}
+interface Blob { id: number; size: number; left: number; top: number; color: string; dur: number; delay: number }
 
 export default function Home() {
-  const [petals] = useState(() =>
-    Array.from({ length: 18 }, (_, i) => ({
+  const [blobs, setBlobs] = useState<Blob[]>([])
+
+  useEffect(() => {
+    setBlobs(Array.from({ length: 20 }, (_, i) => ({
       id: i,
-      size: 20 + Math.random() * 60,
+      size: 30 + Math.random() * 80,
       left: Math.random() * 100,
-      color: confettiColors[i % confettiColors.length],
-      delay: Math.random() * 8,
-      duration: 6 + Math.random() * 6,
-    }))
-  )
+      top: Math.random() * 100,
+      color: BLOB_COLORS[i % BLOB_COLORS.length],
+      dur: 5 + Math.random() * 5,
+      delay: Math.random() * 6,
+    })))
+  }, [])
 
   return (
     <main style={{ minHeight:'100vh', background:'var(--bg)', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', padding:'2rem', overflow:'hidden', position:'relative' }}>
-      {/* floating background blobs */}
-      {petals.map(p => (
-        <FloatingPetal key={p.id} style={{
-          width: p.size, height: p.size,
-          left: `${p.left}%`, top: `${20 + Math.random()*60}%`,
-          background: p.color,
-          animation: `floatBlob ${p.duration}s ease-in-out ${p.delay}s infinite alternate`,
-        }} />
-      ))}
-
       <style>{`
-        @keyframes floatBlob {
-          0% { transform: translateY(0px) scale(1); }
-          100% { transform: translateY(-30px) scale(1.08); }
-        }
-        @keyframes titleFloat {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-8px); }
-        }
-        @keyframes cardIn {
-          from { opacity: 0; transform: translateY(40px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes floatBlob { 0%{transform:translateY(0) scale(1)} 100%{transform:translateY(-28px) scale(1.08)} }
+        @keyframes titleBob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+        @keyframes cardReveal { from{opacity:0;transform:translateY(36px)} to{opacity:1;transform:translateY(0)} }
         .menu-card {
-          background: white;
-          border-radius: 24px;
-          padding: 2.5rem 2rem;
-          width: 100%;
-          max-width: 280px;
-          text-align: center;
-          border: 2.5px solid var(--green);
-          cursor: pointer;
-          text-decoration: none;
-          color: var(--green);
-          box-shadow: 6px 6px 0px var(--green);
-          transition: transform 0.2s, box-shadow 0.2s;
-          animation: cardIn 0.7s ease both;
-          display: block;
+          background: var(--card-bg); border-radius: 24px; padding: 2.5rem 2rem;
+          width: 260px; text-align: center; border: 2.5px solid var(--green);
+          cursor: pointer; text-decoration: none; color: var(--green);
+          box-shadow: 6px 6px 0 var(--green); transition: transform 0.18s, box-shadow 0.18s; display: block;
         }
-        .menu-card:hover {
-          transform: translate(-3px, -3px);
-          box-shadow: 9px 9px 0px var(--green);
-        }
-        .menu-card:active {
-          transform: translate(2px, 2px);
-          box-shadow: 3px 3px 0px var(--green);
-        }
-        .card-icon {
-          font-size: 3.5rem;
-          margin-bottom: 1rem;
-          display: block;
-        }
-        .card-title {
-          font-family: Georgia, serif;
-          font-weight: bold;
-          font-size: 1.4rem;
-          color: var(--green);
-          margin-bottom: 0.5rem;
-        }
-        .card-desc {
-          font-family: Helvetica, sans-serif;
-          font-size: 0.9rem;
-          color: #557a2d;
-          line-height: 1.5;
-        }
-        .page-title {
-          font-family: Georgia, serif;
-          font-weight: bold;
-          font-size: clamp(2rem, 6vw, 3.5rem);
-          color: var(--green);
-          text-align: center;
-          margin-bottom: 0.6rem;
-          animation: titleFloat 3s ease-in-out infinite;
-          position: relative;
-          z-index: 2;
-        }
-        .page-subtitle {
-          font-family: Helvetica, sans-serif;
-          font-size: clamp(0.85rem, 2.5vw, 1.05rem);
-          color: #557a2d;
-          text-align: center;
-          margin-bottom: 3rem;
-          font-style: italic;
-          position: relative;
-          z-index: 2;
-          letter-spacing: 0.02em;
-        }
-        .cards-row {
-          display: flex;
-          flex-direction: row;
-          gap: 2rem;
-          justify-content: center;
-          position: relative;
-          z-index: 2;
-          flex-wrap: wrap;
-        }
-        @media (max-width: 600px) {
-          .cards-row { flex-direction: column; align-items: center; }
-        }
+        .menu-card:nth-child(1) { animation: cardReveal 0.6s 0.1s ease both; }
+        .menu-card:nth-child(2) { animation: cardReveal 0.6s 0.28s ease both; }
+        .menu-card:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--green); }
+        .menu-card:active { transform: translate(2px,2px); box-shadow: 3px 3px 0 var(--green); }
+        .page-title { font-family: Georgia, serif; font-weight: bold; font-size: clamp(2rem, 7vw, 3.8rem); color: var(--green); text-align: center; animation: titleBob 3.5s ease-in-out infinite; position: relative; z-index: 2; line-height: 1.15; }
+        .page-subtitle { font-family: Helvetica, sans-serif; font-size: clamp(0.82rem, 2.2vw, 1rem); color: var(--green-light); text-align: center; margin: 0.65rem 0 3rem; font-style: italic; position: relative; z-index: 2; }
+        .cards-row { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; position: relative; z-index: 2; }
+        @media (max-width: 580px) { .cards-row { flex-direction: column; align-items: center; } .menu-card { width: 100%; max-width: 300px; } }
       `}</style>
 
+      {blobs.map(b => (
+        <div key={b.id} style={{ position:'fixed', borderRadius:'50%', width:b.size, height:b.size, left:`${b.left}%`, top:`${b.top}%`, background:b.color, opacity:0.45, pointerEvents:'none', animation:`floatBlob ${b.dur}s ease-in-out ${b.delay}s infinite alternate` }} />
+      ))}
+
       <div style={{ position:'relative', zIndex:2, display:'flex', flexDirection:'column', alignItems:'center', width:'100%' }}>
-        <div style={{ fontSize:'2.5rem', marginBottom:'0.5rem' }}>🎂</div>
+        <div style={{ fontSize:'2.8rem', marginBottom:'0.6rem' }}>🎂</div>
         <h1 className="page-title">Happy Birthday, Ndut!</h1>
         <p className="page-subtitle">thank you for being born — from your friends</p>
 
         <div className="cards-row">
-          <Link href="/board" className="menu-card" style={{ animationDelay:'0.1s' }}>
-            <span className="card-icon">💌</span>
-            <div className="card-title">Birthday Board</div>
-            <p className="card-desc">Read all the love and wishes from people who adore you</p>
+          <Link href="/board" className="menu-card">
+            <span style={{ fontSize:'3.2rem', display:'block', marginBottom:'1rem' }}>💌</span>
+            <div style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'1.35rem', color:'var(--green)', marginBottom:'0.4rem' }}>Birthday Board</div>
+            <p style={{ fontFamily:'Helvetica, sans-serif', fontSize:'0.88rem', color:'var(--green-light)', lineHeight:1.55 }}>Read all the love and wishes from everyone who adores you</p>
           </Link>
-
-          <Link href="/msg" className="menu-card" style={{ animationDelay:'0.3s' }}>
-            <span className="card-icon">✍️</span>
-            <div className="card-title">Leave a Wish</div>
-            <p className="card-desc">Send your birthday message and a favorite memory</p>
+          <Link href="/msg" className="menu-card">
+            <span style={{ fontSize:'3.2rem', display:'block', marginBottom:'1rem' }}>✍️</span>
+            <div style={{ fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'1.35rem', color:'var(--green)', marginBottom:'0.4rem' }}>Leave a Wish</div>
+            <p style={{ fontFamily:'Helvetica, sans-serif', fontSize:'0.88rem', color:'var(--green-light)', lineHeight:1.55 }}>Send your birthday message, memory, and a photo</p>
           </Link>
         </div>
 
-        <div style={{ marginTop:'3rem', fontSize:'0.8rem', color:'#99b87a', fontFamily:'Helvetica, sans-serif', position:'relative', zIndex:2 }}>
-          made with 💚 for ndut
-        </div>
+        <p style={{ marginTop:'3rem', fontSize:'0.78rem', color:'var(--green-pale)', fontFamily:'Helvetica', position:'relative', zIndex:2 }}>made with 💚 just for ndut</p>
       </div>
     </main>
   )

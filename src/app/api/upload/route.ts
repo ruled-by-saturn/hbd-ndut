@@ -1,32 +1,30 @@
 import { NextResponse } from 'next/server'
-import { getSupabase } from '../../lib/supabase'
-
-export async function GET() {
-  const supabase = getSupabase()
-  const { data, error } = await supabase
-    .from('wishes')
-    .select('*')
-    .order('created_at', { ascending: false })
-
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
-  return NextResponse.json(data)
-}
+import { getSupabase } from '../../supabase'
 
 export async function POST(req: Request) {
   const supabase = getSupabase()
-  const body = await req.json()
-  const { name, message, memory, photo_urls, shape, color, pos_x, pos_y } = body
+  const formData = await req.formData()
+  const files = formData.getAll('photos') as File[]
 
-  if (!name?.trim() || !message?.trim()) {
-    return NextResponse.json({ error: 'Name and message are required' }, { status: 400 })
+  if (!files || files.length === 0) return NextResponse.json({ urls: [] })
+
+  const urls: string[] = []
+
+  for (const file of files.slice(0, 3)) {
+    const ext = file.name.split('.').pop() || 'jpg'
+    const filename = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
+    const arrayBuffer = await file.arrayBuffer()
+    const buffer = new Uint8Array(arrayBuffer)
+
+    const { error } = await supabase.storage
+      .from('wish-photos')
+      .upload(filename, buffer, { contentType: file.type, upsert: false })
+
+    if (error) { console.error('Upload error:', error.message); continue }
+
+    const { data } = supabase.storage.from('wish-photos').getPublicUrl(filename)
+    urls.push(data.publicUrl)
   }
 
-  const { data, error } = await supabase
-    .from('wishes')
-    .insert([{ name, message, memory, photo_urls: photo_urls ?? [], shape, color, pos_x, pos_y }])
-    .select()
-    .single()
-
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
-  return NextResponse.json(data, { status: 201 })
+  return NextResponse.json({ urls })
 }

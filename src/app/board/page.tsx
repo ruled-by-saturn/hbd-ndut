@@ -322,6 +322,14 @@ function BoardContent() {
       </header>
 
       <div ref={boardRef} style={{ flex:1, position:'relative', overflow:'hidden', minHeight:'calc(100vh - 62px)' }}>
+        {/* watermark */}
+        <div style={{ position:'absolute', inset:0, display:'flex', alignItems:'center', justifyContent:'center', zIndex:1, pointerEvents:'none' }}>
+          <style>{`@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');`}</style>
+          <div style={{ textAlign:'center', color:'#2D5016', opacity:0.18, lineHeight:1.3, userSelect:'none' }}>
+            <div style={{ fontFamily:"'Caveat', cursive", fontSize:'clamp(2.8rem, 8vw, 5.5rem)', fontWeight:600 }}>happy birthday :)</div>
+            <div style={{ fontFamily:"'Caveat', cursive", fontSize:'clamp(1.6rem, 5vw, 3.2rem)', fontWeight:600, marginTop:'0.1em' }}>2026.06.10</div>
+          </div>
+        </div>
         {loading && (
           <div style={{ display:'flex', alignItems:'center', justifyContent:'center', height:'100%' }}>
             <div style={{ textAlign:'center' }}>

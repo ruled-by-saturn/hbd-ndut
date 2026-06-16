@@ -177,7 +177,7 @@ function BoardGate({ onUnlock }: { onUnlock: () => void }) {
   const [unlocking, setUnlocking] = useState(false)
 
   const handleSubmit = () => {
-    if (answer.trim().toLowerCase() === 'melon') {
+    if (answer.trim().toLowerCase() === 'full cream') {
       setUnlocking(true)
       setTimeout(onUnlock, 600)
     } else {
@@ -212,7 +212,7 @@ function BoardGate({ onUnlock }: { onUnlock: () => void }) {
             onClick={handleSubmit}
             style={{ width:'100%', padding:'0.9rem', borderRadius:'999px', border:'none', background:'var(--green)', color:'white', fontFamily:'Georgia, serif', fontWeight:'bold', fontSize:'1rem', cursor:'pointer', boxShadow:'4px 4px 0 #1a4a08' }}
           >
-            let me in 🍈
+            let me in!
           </button>
         </div>
         <Link href="/" style={{ display:'inline-block', marginTop:'1.5rem', fontFamily:'Helvetica', fontSize:'0.8rem', color:'var(--green-pale)', textDecoration:'none' }}>← back to home</Link>
